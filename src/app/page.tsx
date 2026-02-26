@@ -1,64 +1,127 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import { PROJECTS, SKILLS } from '../constants/index'; 
+import { ProjectCard } from '../components/ProjectCard';
+
+export default function FullStackPortfolio() {
+  const [formData, setFormData] = useState({ nome: '', email: '', messaggio: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ nome: '', email: '', messaggio: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30">
+      
+      {/* NAVBAR ORIGINALE RIPRISTINATA */}
+      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <span className="text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+            DevPortfolio.
+          </span>
+          <ul className="flex gap-6 text-sm font-medium text-neutral-400">
+            <li className="hover:text-white cursor-pointer transition-colors"><a href="#progetti">Progetti</a></li>
+            <li className="hover:text-white cursor-pointer transition-colors"><a href="#skills">Skills</a></li>
+            <li className="hover:text-white cursor-pointer transition-colors"><a href="#contatti">Contatti</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main className="max-w-5xl mx-auto px-6 pt-32 pb-16 space-y-32">
+        
+        {/* HERO SECTION */}
+        <section className="flex flex-col items-start gap-6 pt-12">
+          <div className="flex items-center gap-3 text-sm font-mono text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Disponibile per nuovi progetti
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-100">
+            Ciao, sono uno <br/>
+            <span className="text-blue-500">Sviluppatore Full Stack.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+        </section>
+
+        {/* PROJECTS SECTION - DINAMICA */}
+        <section id="progetti">
+          <h2 className="text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {PROJECTS.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        </section>
+
+        {/* SKILLS SECTION */}
+        <section id="skills">
+          <h2 className="text-3xl font-bold mb-8 tracking-tight">Competenze Tecniche</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {SKILLS.map((skill) => (
+              <div key={skill.name} className="p-4 border border-neutral-800 rounded-xl bg-neutral-900/30 hover:border-blue-500/30 transition-colors">
+                <skill.icon className="mb-3 text-blue-400" size={24} />
+                <h4 className="font-semibold mb-2">{skill.name}</h4>
+                <div className="flex flex-wrap gap-1">
+                  {skill.tech.map(t => (
+                    <span key={t} className="text-[10px] text-neutral-500 font-mono">· {t}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CONTACT SECTION */}
+        <section id="contatti" className="max-w-md">
+          <h2 className="text-3xl font-bold mb-4 tracking-tight">Facciamo rete.</h2>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input 
+              type="text" required placeholder="Il tuo nome" 
+              value={formData.nome}
+              onChange={(e) => setFormData({...formData, nome: e.target.value})}
+              className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <input 
+              type="email" required placeholder="La tua email" 
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors"
+            />
+            <textarea 
+              required placeholder="Il tuo messaggio" rows={4}
+              value={formData.messaggio}
+              onChange={(e) => setFormData({...formData, messaggio: e.target.value})}
+              className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+            ></textarea>
+            <button 
+              type="submit" disabled={status === 'loading'}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-neutral-800 text-white font-medium py-3 rounded-lg transition-colors"
+            >
+              {status === 'loading' ? 'Invio in corso...' : 'Invia Messaggio'}
+            </button>
+            {status === 'success' && <p className="text-green-400 text-sm mt-2">Messaggio inviato con successo!</p>}
+            {status === 'error' && <p className="text-red-400 text-sm mt-2">Errore durante l'invio. Riprova.</p>}
+          </form>
+        </section>
       </main>
     </div>
   );
