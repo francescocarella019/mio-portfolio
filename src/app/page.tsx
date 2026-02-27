@@ -34,19 +34,21 @@ export default function FullStackPortfolio() {
       {/* NAVBAR ORIGINALE RIPRISTINATA */}
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-            DevPortfolio.
+          <span
+              className="text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+            Francesco Pio Carella
           </span>
           <ul className="flex gap-6 text-sm font-medium text-neutral-400">
-            <li className="hover:text-white cursor-pointer transition-colors"><a href="#progetti">Progetti</a></li>
-            <li className="hover:text-white cursor-pointer transition-colors"><a href="#skills">Skills</a></li>
-            <li className="hover:text-white cursor-pointer transition-colors"><a href="#contatti">Contatti</a></li>
+            <li className="transition delay-150 duration-200 ease-in-out hover:text-white cursor-pointer   hover:-translate-y-1 hover:scale-100"><a
+                href="#progetti">Progetti</a></li>
+            <li className="transition delay-150 duration-500 ease-in-out hover:text-white cursor-pointer hover:-translate-y-1 hover:scale-100"><a href="#skills">Skills</a></li>
+            <li className="transition delay-150 duration-500 ease-in-out hover:text-white cursor-pointer hover:-translate-y-1 hover:scale-100"><a href="#contatti">Contatti</a></li>
           </ul>
         </div>
       </nav>
 
       <main className="max-w-5xl mx-auto px-6 pt-32 pb-16 space-y-32">
-        
+
         {/* HERO SECTION */}
         <section className="flex flex-col items-start gap-6 pt-12">
           <div className="flex items-center gap-3 text-sm font-mono text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
