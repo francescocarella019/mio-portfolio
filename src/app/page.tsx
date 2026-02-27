@@ -35,7 +35,7 @@ export default function FullStackPortfolio() {
         <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
           <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <span
-              className="text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+              className="text-sm  md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
           </span>
             <ul className="flex gap-6 text-sm font-medium text-neutral-400">
@@ -70,7 +70,7 @@ export default function FullStackPortfolio() {
           </section>
 
           {/* PROJECTS SECTION - DINAMICA */}
-          <section id="progetti">
+          <section id="progetti" >
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {PROJECTS.map((project, index) => (
