@@ -1,10 +1,10 @@
 import { Cpu, Globe, Database, Layout } from "lucide-react";
 
 export const SKILLS = [
-  { name: "Frontend", icon: Layout, tech: ["React", "Next.js", "Tailwind", "TypeScript"] },
-  { name: "Backend", icon: Database, tech: ["Node.js", "Express", "Prisma", "PostgreSQL"] },
-  { name: "DevOps", icon: Cpu, tech: ["Docker", "AWS", "CI/CD", "Nginx"] },
-  { name: "Altro", icon: Globe, tech: ["GraphQL", "REST APIs", "Jest", "Git"] },
+  { name: "Frontend", icon: Layout, tech: ["React", "Next.js", "Tailwind", "JavaScript/TypeScript", "Angular"] },
+  { name: "Backend", icon: Database, tech: ["Node.js", "Express", "Java","Spring-Boot", "MySQL"] },
+  { name: "DevOps", icon: Cpu, tech: ["Docker","CI/CD"] },
+  { name: "Altro", icon: Globe, tech: ["NoSQL", "REST APIs", "Git/GitHub", "Json", "GDPR"] },
 ];
 
 export const PROJECTS = [
@@ -18,6 +18,12 @@ export const PROJECTS = [
     title: "AI Dashboard SaaS",
     description: "Piattaforma di analisi dati che integra modelli OpenAI per insight predittivi aziendali.",
     tech: ["React", "Python", "FastAPI", "PostgreSQL"],
+    link: "#",
+  },
+  {
+    title: "Progetto gestione ristorante",
+    description: "Piattoforma di sviluppo full-stack per la gestione degli ordini ai tavoli dei ristoranti",
+    tech: ["Java", "Spring-Boot", "Maven", "Tailwind-CSS"],
     link: "#",
   },
 ];
