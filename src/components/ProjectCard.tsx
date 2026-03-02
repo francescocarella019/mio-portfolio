@@ -9,7 +9,7 @@ export const ProjectCard = ({ project }: { project: any }) => (
   >
     <div className="flex justify-between items-start mb-4">
       <div className="h-10 w-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-        <ExternalLink size={20} className="text-blue-400" />
+       <a href={project.link}><ExternalLink size={20} className="text-blue-400" /></a>
       </div>
     </div>
     <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">{project.title}</h3>

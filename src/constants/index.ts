@@ -26,4 +26,10 @@ export const PROJECTS = [
     tech: ["Java", "Spring-Boot", "Maven", "Tailwind-CSS"],
     link: "#",
   },
+  {
+    title: "Sviluppo Portfolio",
+    description: "Website per descrivere la mia figura professionale",
+    tech: ["Next.js", "Typescript", "React", "Resend Skill", "CI/CD"],
+    link: "https://github.com/francescocarella019/mio-portfolio",
+  },
 ];
