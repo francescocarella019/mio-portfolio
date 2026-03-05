@@ -17,6 +17,7 @@ type ProjectCardProps = {
 export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
   const shouldReduceMotion = useReducedMotion();
   const easeCurve = [0.22, 1, 0.36, 1] as const;
+  const isExternalLink = project.link.startsWith("http");
 
   return (
     <motion.div
@@ -36,8 +37,14 @@ export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
           {project.category}
         </span>
         <div className="h-10 w-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-          <a href={project.link} onClick={() => trackEvent("project_link_click", { project_title: project.title, category: project.category })}>
-            <ExternalLink size={20} className="text-blue-400" />
+          <a
+            href={project.link}
+            aria-label={`Apri il progetto ${project.title}`}
+            target={isExternalLink ? "_blank" : undefined}
+            rel={isExternalLink ? "noopener noreferrer" : undefined}
+            onClick={() => trackEvent("project_link_click", { project_title: project.title, category: project.category })}
+          >
+            <ExternalLink size={20} className="text-blue-400 transition-transform group-hover:scale-110 group-hover:-rotate-6" />
           </a>
         </div>
       </div>
