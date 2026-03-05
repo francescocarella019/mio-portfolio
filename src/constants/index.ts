@@ -9,30 +9,36 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
+    category: "Backend",
     title: "E-Commerce Microservices",
     description: "Architettura a microservizi scalabile con gestione pagamenti Stripe e catalogo prodotti real-time.",
     tech: ["Next.js", "Go", "Redis", "Docker"],
     link: "#",
   },
   {
+    category: "Full Stack",
     title: "AI Dashboard SaaS",
     description: "Piattaforma di analisi dati che integra modelli OpenAI per insight predittivi aziendali.",
     tech: ["React", "Python", "FastAPI", "PostgreSQL"],
     link: "#",
   },
   {
+    category: "Full Stack",
     title: "Progetto gestione ristorante",
     description: "Piattoforma di sviluppo full-stack per la gestione degli ordini ai tavoli dei ristoranti",
     tech: ["Java", "Spring-Boot", "Maven", "Tailwind-CSS"],
     link: "#",
   },
   {
+    category: "Frontend",
     title: "Sviluppo Portfolio",
     description: "Website per descrivere la mia figura professionale",
     tech: ["Next.js", "Typescript", "React", "Resend Skill", "CI/CD"],
     link: "https://github.com/francescocarella019/mio-portfolio",
   },
 ];
+
+export const PROJECT_CATEGORIES = ["Tutti", "Frontend", "Backend", "Full Stack"] as const;
 
 export const EXPERIENCE = [
   {

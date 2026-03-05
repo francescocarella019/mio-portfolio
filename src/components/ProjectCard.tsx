@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 type ProjectCardProps = {
   project: {
+    category: string;
     title: string;
     description: string;
     tech: string[];
@@ -30,6 +31,9 @@ export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
       className="group bg-neutral-900/50 border border-neutral-800 p-6 rounded-2xl hover:border-blue-500/50 transition-all shadow-xl"
     >
       <div className="flex justify-between items-start mb-4">
+        <span className="px-2.5 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-[11px] font-semibold text-blue-300">
+          {project.category}
+        </span>
         <div className="h-10 w-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
           <a href={project.link}>
             <ExternalLink size={20} className="text-blue-400" />

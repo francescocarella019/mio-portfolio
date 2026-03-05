@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { EXPERIENCE, PROJECTS, SKILLS } from '../constants/index';
+import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
 import { ProjectCard } from '../components/ProjectCard';
 
 const NAV_ITEMS = [
@@ -16,6 +16,7 @@ export default function FullStackPortfolio() {
   const [formData, setFormData] = useState({ nome: '', email: '', messaggio: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [activeSection, setActiveSection] = useState<(typeof NAV_ITEMS)[number]['id']>('progetti');
+  const [activeProjectFilter, setActiveProjectFilter] = useState<(typeof PROJECT_CATEGORIES)[number]>(PROJECT_CATEGORIES[0]);
   const shouldReduceMotion = useReducedMotion();
   const easeCurve = [0.22, 1, 0.36, 1] as const;
 
@@ -102,6 +103,11 @@ export default function FullStackPortfolio() {
     },
   };
 
+  const filteredProjects =
+    activeProjectFilter === 'Tutti'
+      ? PROJECTS
+      : PROJECTS.filter((project) => project.category === activeProjectFilter);
+
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30">
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
@@ -172,9 +178,25 @@ export default function FullStackPortfolio() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className="text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {PROJECT_CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveProjectFilter(category)}
+                className={`rounded-full border px-4 py-2 text-xs md:text-sm font-semibold transition-colors ${
+                  activeProjectFilter === category
+                    ? 'border-blue-500 bg-blue-500/20 text-blue-300'
+                    : 'border-neutral-700 bg-neutral-900 text-neutral-300 hover:border-blue-500/50 hover:text-neutral-100'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
           <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={gridVariants}>
-            {PROJECTS.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </motion.div>
         </motion.section>
