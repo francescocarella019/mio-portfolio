@@ -138,7 +138,7 @@ export default function FullStackPortfolio() {
         />
       </div>
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <span className="text-sm md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
           </span>
@@ -178,7 +178,7 @@ export default function FullStackPortfolio() {
         transition={{ duration: 0.2 }}
         className="fixed top-16 left-0 right-0 z-40 border-b border-neutral-800 bg-neutral-950/95 backdrop-blur-md md:hidden"
       >
-        <ul className="px-6 py-3 space-y-2 text-sm font-medium">
+        <ul className="px-5 py-3 space-y-2 text-sm font-medium">
           {NAV_ITEMS.map((item) => (
             <li key={item.id}>
               <a
@@ -193,9 +193,9 @@ export default function FullStackPortfolio() {
         </ul>
       </motion.div>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-16 space-y-24 md:space-y-32">
+      <main className="relative z-10 max-w-5xl mx-auto px-5 sm:px-7 md:px-8 pt-28 md:pt-32 pb-16 space-y-24 md:space-y-32">
         <motion.section
-          className="flex flex-col items-start gap-6 pt-10 md:pt-12 px-2 md:px-0 pb-4"
+          className="flex flex-col items-start gap-6 pt-10 md:pt-12 px-1 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
@@ -352,7 +352,7 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <div className="w-full md:w-6/12 lg:w-1/2">
+          <div className="w-full px-1 md:px-0 md:w-6/12 lg:w-1/2">
             <h2 className="section-title text-3xl font-bold mb-8 tracking-tight text-center">Contattami</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
