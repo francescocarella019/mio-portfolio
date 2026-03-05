@@ -33,3 +33,27 @@ export const PROJECTS = [
     link: "https://github.com/francescocarella019/mio-portfolio",
   },
 ];
+
+export const EXPERIENCE = [
+  {
+    period: "2025 - Oggi",
+    title: "Sviluppatore Full Stack (Progetti personali)",
+    subtitle: "Portfolio, app web e architetture backend",
+    summary:
+      "Sviluppo di applicazioni complete con Next.js, Java/Spring Boot e integrazioni API, con attenzione a UX, performance e deployment.",
+  },
+  {
+    period: "2024 - 2025",
+    title: "Formazione tecnica Full Stack",
+    subtitle: "Percorso pratico su frontend e backend",
+    summary:
+      "Approfondimento di React, TypeScript, Java, database SQL/NoSQL, Git/GitHub e buone pratiche di sviluppo collaborativo.",
+  },
+  {
+    period: "2023 - 2024",
+    title: "Primi progetti web strutturati",
+    subtitle: "Focus su basi solide",
+    summary:
+      "Realizzazione di applicazioni CRUD e REST API, consolidando clean code, versionamento e debug in contesti reali.",
+  },
+];

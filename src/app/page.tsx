@@ -1,15 +1,59 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { PROJECTS, SKILLS } from '../constants/index';
+import { EXPERIENCE, PROJECTS, SKILLS } from '../constants/index';
 import { ProjectCard } from '../components/ProjectCard';
+
+const NAV_ITEMS = [
+  { id: 'progetti', label: 'Progetti' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'esperienza', label: 'Esperienza' },
+  { id: 'contatti', label: 'Contatti' },
+] as const;
 
 export default function FullStackPortfolio() {
   const [formData, setFormData] = useState({ nome: '', email: '', messaggio: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [activeSection, setActiveSection] = useState<(typeof NAV_ITEMS)[number]['id']>('progetti');
   const shouldReduceMotion = useReducedMotion();
   const easeCurve = [0.22, 1, 0.36, 1] as const;
+
+  useEffect(() => {
+    const sectionIds = NAV_ITEMS.map((item) => item.id);
+
+    const updateActiveSection = () => {
+      const probe = window.innerHeight * 0.32;
+      let currentSection = sectionIds[0];
+
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+        if (!section) {
+          continue;
+        }
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probe) {
+          currentSection = id;
+        }
+        if (rect.top <= probe && rect.bottom >= probe) {
+          currentSection = id;
+          break;
+        }
+      }
+
+      setActiveSection((prev) => (prev === currentSection ? prev : currentSection));
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,15 +110,16 @@ export default function FullStackPortfolio() {
             Francesco Pio Carella
           </span>
           <ul className="flex gap-6 text-sm font-medium text-neutral-400">
-            <li className="transition delay-150 duration-200 ease-in-out hover:text-white cursor-pointer hover:-translate-y-1 hover:scale-100">
-              <a href="#progetti">Progetti</a>
-            </li>
-            <li className="transition delay-150 duration-500 ease-in-out hover:text-white cursor-pointer hover:-translate-y-1 hover:scale-100">
-              <a href="#skills">Skills</a>
-            </li>
-            <li className="transition delay-150 duration-500 ease-in-out hover:text-white cursor-pointer hover:-translate-y-1 hover:scale-100">
-              <a href="#contatti">Contatti</a>
-            </li>
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id} className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100">
+                <a
+                  href={`#${item.id}`}
+                  className={`cursor-pointer transition-colors ${activeSection === item.id ? 'text-blue-400' : 'text-neutral-400 hover:text-white'}`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
@@ -97,6 +142,26 @@ export default function FullStackPortfolio() {
             Ciao, sono uno <br />
             <span className="text-blue-500">Sviluppatore Full Stack.</span>
           </h1>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.45, ease: easeCurve }}
+          >
+            <a
+              href="#contatti"
+              className="inline-flex items-center justify-center rounded-xl border border-blue-500 bg-blue-500 px-6 py-3 text-sm font-semibold text-neutral-950 hover:bg-blue-400 hover:border-blue-400 transition-colors"
+            >
+              Contattami
+            </a>
+            <a
+              href="/FrancescoCarella_CV.pdf"
+              download
+              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3 text-sm font-semibold text-neutral-100 hover:border-blue-500 hover:text-blue-400 transition-colors"
+            >
+              Scarica CV
+            </a>
+          </motion.div>
         </motion.section>
 
         <motion.section
@@ -140,6 +205,31 @@ export default function FullStackPortfolio() {
                   ))}
                 </div>
               </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          id="esperienza"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <h2 className="text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
+          <motion.div className="relative space-y-6 border-l border-neutral-800 pl-6 md:pl-8" variants={gridVariants}>
+            {EXPERIENCE.map((item) => (
+              <motion.article
+                key={`${item.period}-${item.title}`}
+                variants={itemVariants}
+                className="relative rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 md:p-6 hover:border-blue-500/40 transition-colors"
+              >
+                <span className="absolute -left-[33px] md:-left-[41px] top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
+                <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
+                <h3 className="text-lg md:text-xl font-semibold text-neutral-100">{item.title}</h3>
+                <p className="text-sm text-neutral-300 mt-1">{item.subtitle}</p>
+                <p className="text-sm text-neutral-400 mt-3 leading-relaxed">{item.summary}</p>
+              </motion.article>
             ))}
           </motion.div>
         </motion.section>
