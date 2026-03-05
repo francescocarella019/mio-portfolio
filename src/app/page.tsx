@@ -229,7 +229,7 @@ export default function FullStackPortfolio() {
               href="#contatti"
               aria-label="Vai alla sezione contatti"
               onClick={() => trackEvent('cta_contact_click', { location: 'hero' })}
-              className="btn-gradient inline-flex items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white transition-colors"
+              className="btn-gradient inline-flex items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
             >
               Contattami
             </a>
@@ -238,7 +238,7 @@ export default function FullStackPortfolio() {
               download
               aria-label="Scarica il CV di Francesco Carella"
               onClick={() => trackEvent('cta_cv_download_click', { location: 'hero' })}
-              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 hover:border-blue-500 hover:text-blue-400 transition-colors"
+              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-neutral-800 hover:shadow-[0_10px_24px_rgba(2,6,23,0.35)] hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40"
             >
               Scarica CV
             </a>
@@ -384,7 +384,7 @@ export default function FullStackPortfolio() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="btn-gradient self-center px-8 py-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors border border-blue-400"
+                className="btn-gradient self-center px-8 py-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl border border-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
               >
                 {status === 'loading' ? 'Invio in corso...' : 'Invia Messaggio'}
               </button>
@@ -392,6 +392,13 @@ export default function FullStackPortfolio() {
               <div className="text-center">
                 {status === 'success' && <p className="text-green-400 text-sm mt-2">Messaggio inviato con successo!</p>}
                 {status === 'error' && <p className="text-red-400 text-sm mt-2">Errore durante l&apos;invio. Riprova.</p>}
+                <p className="text-xs text-neutral-500 mt-4">
+                  Inviando il modulo accetti il trattamento dei dati secondo la{' '}
+                  <a href="/privacy" className="underline underline-offset-4 hover:text-neutral-300">
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
               </div>
             </form>
           </div>
