@@ -253,7 +253,7 @@ export default function FullStackPortfolio() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
-          <div className="glass-panel rounded-2xl p-2 flex flex-wrap gap-2 mb-8 w-fit max-w-full">
+          <div className="mb-8 flex gap-2 overflow-x-auto whitespace-nowrap pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {PROJECT_CATEGORIES.map((category) => (
               <button
                 key={category}
@@ -262,7 +262,7 @@ export default function FullStackPortfolio() {
                   setActiveProjectFilter(category);
                   trackEvent('projects_filter_change', { category });
                 }}
-                className={`rounded-full border px-4 py-2 text-xs md:text-sm font-semibold transition-colors ${
+                className={`shrink-0 rounded-full border px-4 py-2 text-xs md:text-sm font-semibold transition-colors ${
                   activeProjectFilter === category
                     ? 'border-blue-500 bg-blue-500/25 text-blue-200 shadow-[0_8px_16px_rgba(37,99,235,0.25)]'
                     : 'border-neutral-700 bg-neutral-900/80 text-neutral-300 hover:text-neutral-100'
