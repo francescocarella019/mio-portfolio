@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
 import { ProjectCard } from '../components/ProjectCard';
+import { trackEvent } from '../lib/analytics';
 
 const NAV_ITEMS = [
   { id: 'progetti', label: 'Progetti' },
@@ -68,11 +69,14 @@ export default function FullStackPortfolio() {
       if (response.ok) {
         setStatus('success');
         setFormData({ nome: '', email: '', messaggio: '' });
+        trackEvent('contact_form_submit_success');
       } else {
         setStatus('error');
+        trackEvent('contact_form_submit_error', { status_code: response.status });
       }
     } catch {
       setStatus('error');
+      trackEvent('contact_form_submit_error', { status_code: 0 });
     }
   };
 
@@ -156,6 +160,7 @@ export default function FullStackPortfolio() {
           >
             <a
               href="#contatti"
+              onClick={() => trackEvent('cta_contact_click', { location: 'hero' })}
               className="inline-flex items-center justify-center rounded-xl border border-blue-500 bg-blue-500 px-6 py-3 text-sm font-semibold text-neutral-950 hover:bg-blue-400 hover:border-blue-400 transition-colors"
             >
               Contattami
@@ -163,6 +168,7 @@ export default function FullStackPortfolio() {
             <a
               href="/FrancescoCarella_CV.pdf"
               download
+              onClick={() => trackEvent('cta_cv_download_click', { location: 'hero' })}
               className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3 text-sm font-semibold text-neutral-100 hover:border-blue-500 hover:text-blue-400 transition-colors"
             >
               Scarica CV
@@ -183,7 +189,10 @@ export default function FullStackPortfolio() {
               <button
                 key={category}
                 type="button"
-                onClick={() => setActiveProjectFilter(category)}
+                onClick={() => {
+                  setActiveProjectFilter(category);
+                  trackEvent('projects_filter_change', { category });
+                }}
                 className={`rounded-full border px-4 py-2 text-xs md:text-sm font-semibold transition-colors ${
                   activeProjectFilter === category
                     ? 'border-blue-500 bg-blue-500/20 text-blue-300'

@@ -1,6 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { trackEvent } from "../lib/analytics";
 
 type ProjectCardProps = {
   project: {
@@ -35,7 +36,7 @@ export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
           {project.category}
         </span>
         <div className="h-10 w-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
-          <a href={project.link}>
+          <a href={project.link} onClick={() => trackEvent("project_link_click", { project_title: project.title, category: project.category })}>
             <ExternalLink size={20} className="text-blue-400" />
           </a>
         </div>
