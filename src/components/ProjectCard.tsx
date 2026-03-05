@@ -29,8 +29,9 @@ export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
         delay: shouldReduceMotion ? 0 : index * 0.06,
       }}
       whileHover={shouldReduceMotion ? undefined : { y: -5 }}
-      className="group bg-neutral-900/50 border border-neutral-800 p-6 rounded-2xl hover:border-blue-500/50 transition-all shadow-xl"
+      className="group glass-panel relative overflow-hidden p-6 rounded-2xl transition-all"
     >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent" />
       <div className="flex justify-between items-start mb-4">
         <span className="px-2.5 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-[11px] font-semibold text-blue-300">
           {project.category}
@@ -53,3 +54,4 @@ export const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
     </motion.div>
   );
 };
+
