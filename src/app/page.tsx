@@ -137,7 +137,7 @@ export default function FullStackPortfolio() {
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
-      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800 bg-neutral-950/70 backdrop-blur-md">
+      <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <span className="text-sm md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
@@ -195,7 +195,7 @@ export default function FullStackPortfolio() {
 
       <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-16 space-y-24 md:space-y-32">
         <motion.section
-          className="flex flex-col items-start gap-6 pt-12"
+          className="flex flex-col items-start gap-6 pt-10 md:pt-12 px-2 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
@@ -211,6 +211,14 @@ export default function FullStackPortfolio() {
             Ciao, sono uno <br />
             <span className="text-blue-500">Sviluppatore Full Stack.</span>
           </h1>
+          <p className="max-w-2xl text-sm md:text-base leading-relaxed text-neutral-300">
+            Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">React + Next.js</span>
+            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">Java + Spring</span>
+            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">UI motion-driven</span>
+          </div>
           <motion.div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
@@ -221,7 +229,7 @@ export default function FullStackPortfolio() {
               href="#contatti"
               aria-label="Vai alla sezione contatti"
               onClick={() => trackEvent('cta_contact_click', { location: 'hero' })}
-              className="inline-flex items-center justify-center rounded-xl border border-blue-500 bg-blue-500 px-6 py-3 text-sm font-semibold text-neutral-950 hover:bg-blue-400 hover:border-blue-400 transition-colors"
+              className="btn-gradient inline-flex items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white transition-colors"
             >
               Contattami
             </a>
@@ -230,7 +238,7 @@ export default function FullStackPortfolio() {
               download
               aria-label="Scarica il CV di Francesco Carella"
               onClick={() => trackEvent('cta_cv_download_click', { location: 'hero' })}
-              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3 text-sm font-semibold text-neutral-100 hover:border-blue-500 hover:text-blue-400 transition-colors"
+              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 hover:border-blue-500 hover:text-blue-400 transition-colors"
             >
               Scarica CV
             </a>
@@ -244,8 +252,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
-          <div className="flex flex-wrap gap-2 mb-8">
+          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
+          <div className="glass-panel rounded-2xl p-2 flex flex-wrap gap-2 mb-8 w-fit max-w-full">
             {PROJECT_CATEGORIES.map((category) => (
               <button
                 key={category}
@@ -256,8 +264,8 @@ export default function FullStackPortfolio() {
                 }}
                 className={`rounded-full border px-4 py-2 text-xs md:text-sm font-semibold transition-colors ${
                   activeProjectFilter === category
-                    ? 'border-blue-500 bg-blue-500/20 text-blue-300'
-                    : 'border-neutral-700 bg-neutral-900 text-neutral-300 hover:border-blue-500/50 hover:text-neutral-100'
+                    ? 'border-blue-500 bg-blue-500/25 text-blue-200 shadow-[0_8px_16px_rgba(37,99,235,0.25)]'
+                    : 'border-neutral-700 bg-neutral-900/80 text-neutral-300 hover:text-neutral-100'
                 }`}
               >
                 {category}
@@ -288,14 +296,14 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-3xl font-bold mb-8 tracking-tight">Competenze Tecniche</h2>
+          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Competenze Tecniche</h2>
           <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-4" variants={gridVariants}>
             {SKILLS.map((skill) => (
               <motion.div
                 key={skill.name}
                 variants={itemVariants}
                 whileHover={shouldReduceMotion ? undefined : { y: -6, scale: 1.01 }}
-                className="p-4 border border-neutral-800 rounded-xl bg-neutral-900/30 hover:border-blue-500/30 transition-colors"
+                className="glass-panel p-4 rounded-xl transition-colors"
               >
                 <skill.icon className="mb-3 text-blue-400" size={24} />
                 <h4 className="font-semibold mb-2">{skill.name}</h4>
@@ -318,13 +326,13 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
+          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
           <motion.div className="relative space-y-6 border-l border-neutral-800 pl-6 md:pl-8" variants={gridVariants}>
             {EXPERIENCE.map((item) => (
               <motion.article
                 key={`${item.period}-${item.title}`}
                 variants={itemVariants}
-                className="relative rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 md:p-6 hover:border-blue-500/40 transition-colors"
+                className="glass-panel relative rounded-2xl p-5 md:p-6 transition-colors"
               >
                 <span className="absolute -left-[33px] md:-left-[41px] top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
                 <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
@@ -344,8 +352,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <div className="w-full px-6 md:w-6/12 lg:w-1/2">
-            <h2 className="text-3xl font-bold mb-8 tracking-tight text-center">Contattami</h2>
+          <div className="w-full md:w-6/12 lg:w-1/2">
+            <h2 className="section-title text-3xl font-bold mb-8 tracking-tight text-center">Contattami</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
@@ -354,7 +362,7 @@ export default function FullStackPortfolio() {
                 placeholder="Il tuo nome"
                 value={formData.nome}
                 onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-neutral-900/90 border border-neutral-700 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition"
               />
               <input
                 type="email"
@@ -362,7 +370,7 @@ export default function FullStackPortfolio() {
                 placeholder="La tua email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full bg-neutral-900/90 border border-neutral-700 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition"
               />
               <textarea
                 required
@@ -370,13 +378,13 @@ export default function FullStackPortfolio() {
                 rows={4}
                 value={formData.messaggio}
                 onChange={(e) => setFormData({ ...formData, messaggio: e.target.value })}
-                className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                className="w-full bg-neutral-900/90 border border-neutral-700 rounded-lg px-4 py-3 text-neutral-100 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition resize-none"
               ></textarea>
 
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="self-center px-15 py-3 cursor-pointer disabled:bg-neutral-800 text-blue-400 font-medium rounded-xl transition-colors border border-blue-400 hover:border-blue-500 hover:text-blue-500"
+                className="btn-gradient self-center px-8 py-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors border border-blue-400"
               >
                 {status === 'loading' ? 'Invio in corso...' : 'Invia Messaggio'}
               </button>
@@ -392,3 +400,4 @@ export default function FullStackPortfolio() {
     </div>
   );
 }
+
