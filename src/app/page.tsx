@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
 import { LogoLoop } from '../components/LogoLoop';
+import { ParticlesBackground } from '../components/ParticlesBackground';
 import { ProjectCard } from '../components/ProjectCard';
 import { ScrollStack } from '../components/ScrollStack';
 import { SplitText } from '../components/SplitText';
@@ -137,14 +138,7 @@ export default function FullStackPortfolio() {
         className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500"
         style={{ scaleX: progressScale }}
       />
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <div
-          className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
-        />
-        <div
-          className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
-        />
-      </div>
+      <ParticlesBackground />
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <span className="max-w-[70vw] truncate text-xs sm:text-sm md:max-w-none md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
