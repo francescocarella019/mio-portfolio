@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
 import { ProjectCard } from '../components/ProjectCard';
+import { SplitText } from '../components/SplitText';
 import { trackEvent } from '../lib/analytics';
 
 const NAV_ITEMS = [
@@ -209,7 +210,7 @@ export default function FullStackPortfolio() {
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-neutral-100">
             Ciao, sono uno <br />
-            <span className="text-blue-500">Sviluppatore Full Stack.</span>
+            <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
           <p className="max-w-2xl text-sm md:text-base leading-relaxed text-neutral-300">
             Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
