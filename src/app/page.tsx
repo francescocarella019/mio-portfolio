@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
+import { LogoLoop } from '../components/LogoLoop';
 import { ProjectCard } from '../components/ProjectCard';
+import { ScrollStack } from '../components/ScrollStack';
 import { SplitText } from '../components/SplitText';
 import { trackEvent } from '../lib/analytics';
 
@@ -12,6 +14,15 @@ const NAV_ITEMS = [
   { id: 'skills', label: 'Skills' },
   { id: 'esperienza', label: 'Esperienza' },
   { id: 'contatti', label: 'Contatti' },
+] as const;
+
+const HERO_LOGOS = [
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', alt: 'React', title: 'React' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', alt: 'Next.js', title: 'Next.js' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg', alt: 'Spring', title: 'Spring' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', alt: 'TypeScript', title: 'TypeScript' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', alt: 'Tailwind CSS', title: 'Tailwind CSS' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', alt: 'Node.js', title: 'Node.js' },
 ] as const;
 
 export default function FullStackPortfolio() {
@@ -215,11 +226,7 @@ export default function FullStackPortfolio() {
           <p className="max-w-2xl text-sm md:text-base leading-relaxed text-neutral-300">
             Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">React + Next.js</span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">Java + Spring</span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">UI motion-driven</span>
-          </div>
+          <LogoLoop logos={HERO_LOGOS} speed={80} pauseOnHover className="max-w-md" />
           <motion.div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
@@ -328,21 +335,7 @@ export default function FullStackPortfolio() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
-          <motion.div className="relative space-y-6 border-l border-neutral-800 pl-6 md:pl-8" variants={gridVariants}>
-            {EXPERIENCE.map((item) => (
-              <motion.article
-                key={`${item.period}-${item.title}`}
-                variants={itemVariants}
-                className="glass-panel relative rounded-2xl p-5 md:p-6 transition-colors"
-              >
-                <span className="absolute -left-[33px] md:-left-[41px] top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
-                <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
-                <h3 className="text-lg md:text-xl font-semibold text-neutral-100">{item.title}</h3>
-                <p className="text-sm text-neutral-300 mt-1">{item.subtitle}</p>
-                <p className="text-sm text-neutral-400 mt-3 leading-relaxed">{item.summary}</p>
-              </motion.article>
-            ))}
-          </motion.div>
+          <ScrollStack items={EXPERIENCE} />
         </motion.section>
 
         <motion.section
