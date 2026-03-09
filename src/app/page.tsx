@@ -219,8 +219,8 @@ export default function FullStackPortfolio() {
             </span>
             Disponibile per stage/apprendistato
           </div>
-          <h1 className="text-[clamp(2rem,9vw,4.5rem)] leading-[1.05] font-bold tracking-tight text-neutral-100">
-            Ciao, sono uno <br />
+          <h1 className="text-[clamp(1.55rem,7.2vw,4.5rem)] leading-[1.08] font-bold tracking-tight text-neutral-100">
+            Ciao, sono uno <span className="hidden sm:inline"><br /></span>
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
           <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-neutral-300">
@@ -228,7 +228,7 @@ export default function FullStackPortfolio() {
           </p>
           <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={24} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.45, ease: easeCurve }}
