@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef, type CSSProperties } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 type ExperienceItem = {
   period: string;
@@ -17,33 +17,18 @@ type ScrollStackProps = {
 type StackCardProps = {
   item: ExperienceItem;
   index: number;
-  total: number;
   shouldReduceMotion: boolean;
 };
 
-function StackCard({ item, index, total, shouldReduceMotion }: StackCardProps) {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 92%', 'start 40%'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.35, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [28, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
-
+function StackCard({ item, index, shouldReduceMotion }: StackCardProps) {
   return (
-    <div className="relative min-h-[210px] md:min-h-[260px]">
+    <div className="relative min-h-[210px] md:min-h-[240px]">
       <motion.article
-        ref={ref}
-        className="glass-panel relative md:sticky md:[top:var(--stack-top)] rounded-2xl p-4 sm:p-5 md:p-6 transition-colors"
-        style={{
-          '--stack-top': `calc(5.25rem + ${index * 0.7}rem)`,
-          zIndex: total + index,
-          opacity: shouldReduceMotion ? 1 : opacity,
-          y: shouldReduceMotion ? 0 : y,
-          scale: shouldReduceMotion ? 1 : scale,
-        } as CSSProperties}
+        className="glass-panel relative rounded-2xl p-4 sm:p-5 md:p-6 transition-colors"
+        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : index * 0.05 }}
       >
         <span className="absolute -left-[27px] md:-left-[41px] top-6 md:top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
         <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
@@ -59,9 +44,9 @@ export function ScrollStack({ items }: ScrollStackProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative border-l border-neutral-800 pl-5 md:pl-8 space-y-4 md:space-y-0">
+    <div className="relative border-l border-neutral-800 pl-5 md:pl-8 space-y-4">
       {items.map((item, index) => (
-        <StackCard key={`${item.period}-${item.title}`} item={item} index={index} total={items.length} shouldReduceMotion={!!shouldReduceMotion} />
+        <StackCard key={`${item.period}-${item.title}`} item={item} index={index} shouldReduceMotion={!!shouldReduceMotion} />
       ))}
     </div>
   );

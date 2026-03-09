@@ -33,36 +33,32 @@ export function SplitText({ text, className, delay = 0, stagger = 0.04, once = t
         show: {
           transition: {
             delayChildren: delay,
-            staggerChildren: stagger,
+            staggerChildren: Math.min(stagger, 0.03),
           },
         },
       }}
     >
       {words.map((word, wordIndex) => (
-        <span key={`${word}-${wordIndex}`} aria-hidden="true" className="inline-block whitespace-nowrap">
-          {Array.from(word).map((char, charIndex) => (
-            <motion.span
-              key={`${char}-${wordIndex}-${charIndex}`}
-              aria-hidden="true"
-              className="inline-block will-change-transform"
-              variants={{
-                hidden: { opacity: 0, y: '0.8em', filter: 'blur(6px)' },
-                show: {
-                  opacity: 1,
-                  y: '0em',
-                  filter: 'blur(0px)',
-                  transition: {
-                    duration: 0.55,
-                    ease: [0.22, 1, 0.36, 1],
-                  },
+        <React.Fragment key={`${word}-${wordIndex}`}>
+          <motion.span
+            aria-hidden="true"
+            className="inline-block whitespace-nowrap will-change-transform"
+            variants={{
+              hidden: { opacity: 0, y: '0.45em' },
+              show: {
+                opacity: 1,
+                y: '0em',
+                transition: {
+                  duration: 0.38,
+                  ease: [0.22, 1, 0.36, 1],
                 },
-              }}
-            >
-              {char}
-            </motion.span>
-          ))}
+              },
+            }}
+          >
+            {word}
+          </motion.span>
           {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-        </span>
+        </React.Fragment>
       ))}
     </motion.span>
   );

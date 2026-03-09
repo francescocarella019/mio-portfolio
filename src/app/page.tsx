@@ -100,11 +100,11 @@ export default function FullStackPortfolio() {
   };
 
   const sectionVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 32 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 14 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: easeCurve },
+      transition: { duration: 0.38, ease: easeCurve },
     },
   };
 
@@ -112,17 +112,17 @@ export default function FullStackPortfolio() {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+        staggerChildren: shouldReduceMotion ? 0 : 0.04,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 12 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.45, ease: easeCurve },
+      transition: { duration: 0.32, ease: easeCurve },
     },
   };
 
@@ -138,15 +138,11 @@ export default function FullStackPortfolio() {
         style={{ scaleX: progressScale }}
       />
       <div className="pointer-events-none absolute inset-0 -z-0">
-        <motion.div
+        <div
           className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
-          animate={shouldReduceMotion ? undefined : { x: [0, 20, 0], y: [0, 15, 0] }}
-          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <motion.div
+        <div
           className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-cyan-500/10 blur-3xl"
-          animate={shouldReduceMotion ? undefined : { x: [0, -24, 0], y: [0, -10, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
