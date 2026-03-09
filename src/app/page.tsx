@@ -205,9 +205,9 @@ export default function FullStackPortfolio() {
         </ul>
       </motion.div>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-20 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
+      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-16 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
         <motion.section
-          className="flex min-h-[calc(100svh-6rem)] sm:min-h-0 flex-col justify-center items-start gap-5 sm:gap-6 pt-6 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
+          className="flex min-h-[calc(100svh-6rem)] sm:min-h-0 flex-col justify-center items-start gap-5 sm:gap-6 pt-2 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
