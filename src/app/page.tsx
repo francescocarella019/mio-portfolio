@@ -205,9 +205,9 @@ export default function FullStackPortfolio() {
         </ul>
       </motion.div>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
+      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-20 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
         <motion.section
-          className="flex flex-col items-start gap-5 sm:gap-6 pt-8 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
+          className="flex min-h-[calc(100svh-6rem)] sm:min-h-0 flex-col justify-center items-start gap-5 sm:gap-6 pt-6 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
@@ -219,14 +219,14 @@ export default function FullStackPortfolio() {
             </span>
             Disponibile per stage/apprendistato
           </div>
-          <h1 className="text-[clamp(1.55rem,7.2vw,4.5rem)] leading-[1.08] font-bold tracking-tight text-neutral-100">
+          <h1 className="text-[clamp(1.8rem,8.2vw,4.5rem)] leading-[1.08] font-bold tracking-tight text-neutral-100">
             Ciao, sono uno <span className="hidden sm:inline"><br /></span>
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
-          <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-neutral-300">
+          <p className="max-w-2xl text-base sm:text-base leading-relaxed text-neutral-300">
             Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
           </p>
-          <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={24} gap={24} pauseOnHover className="w-full max-w-md" />
+          <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={26} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
