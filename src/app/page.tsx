@@ -151,7 +151,7 @@ export default function FullStackPortfolio() {
       </div>
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <span className="text-sm md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+          <span className="max-w-[70vw] truncate text-xs sm:text-sm md:max-w-none md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
           </span>
           <ul className="hidden md:flex gap-6 text-sm font-medium text-neutral-400">
@@ -205,30 +205,30 @@ export default function FullStackPortfolio() {
         </ul>
       </motion.div>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-5 sm:px-7 md:px-8 pt-28 md:pt-32 pb-16 space-y-24 md:space-y-32">
+      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
         <motion.section
-          className="flex flex-col items-start gap-6 pt-10 md:pt-12 px-1 md:px-0 pb-4"
+          className="flex flex-col items-start gap-5 sm:gap-6 pt-8 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
         >
-          <div className="flex items-center gap-3 text-sm font-mono text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-blue-400 bg-blue-500/10 px-3.5 sm:px-4 py-2 rounded-full border border-blue-500/20">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
             Disponibile per stage/apprendistato
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-neutral-100">
+          <h1 className="text-[clamp(2rem,9vw,4.5rem)] leading-[1.05] font-bold tracking-tight text-neutral-100">
             Ciao, sono uno <br />
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
-          <p className="max-w-2xl text-sm md:text-base leading-relaxed text-neutral-300">
+          <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-neutral-300">
             Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
           </p>
-          <LogoLoop logos={HERO_LOGOS} speed={80} pauseOnHover className="max-w-md" />
+          <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={24} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
+            className="flex w-full flex-col sm:w-auto sm:flex-row gap-3 sm:gap-4 pt-2"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.45, ease: easeCurve }}
@@ -237,7 +237,7 @@ export default function FullStackPortfolio() {
               href="#contatti"
               aria-label="Vai alla sezione contatti"
               onClick={() => trackEvent('cta_contact_click', { location: 'hero' })}
-              className="btn-gradient inline-flex items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
+              className="btn-gradient inline-flex w-full sm:w-auto items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
             >
               Contattami
             </a>
@@ -246,7 +246,7 @@ export default function FullStackPortfolio() {
               download
               aria-label="Scarica il CV di Francesco Carella"
               onClick={() => trackEvent('cta_cv_download_click', { location: 'hero' })}
-              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-neutral-800 hover:shadow-[0_10px_24px_rgba(2,6,23,0.35)] hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40"
+              className="inline-flex w-full sm:w-auto items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-neutral-800 hover:shadow-[0_10px_24px_rgba(2,6,23,0.35)] hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40"
             >
               Scarica CV
             </a>
@@ -260,7 +260,7 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Progetti Architettati</h2>
           <div className="mb-8 flex gap-2 overflow-x-auto whitespace-nowrap pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {PROJECT_CATEGORIES.map((category) => (
               <button
@@ -283,7 +283,7 @@ export default function FullStackPortfolio() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProjectFilter}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
               variants={gridVariants}
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -304,8 +304,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Competenze Tecniche</h2>
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-4" variants={gridVariants}>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Competenze Tecniche</h2>
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4" variants={gridVariants}>
             {SKILLS.map((skill) => (
               <motion.div
                 key={skill.name}
@@ -334,7 +334,7 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Esperienza e Formazione</h2>
           <ScrollStack items={EXPERIENCE} />
         </motion.section>
 
@@ -346,8 +346,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <div className="w-full px-1 md:px-0 md:w-6/12 lg:w-1/2">
-            <h2 className="section-title text-3xl font-bold mb-8 tracking-tight text-center">Contattami</h2>
+          <div className="w-full max-w-2xl px-0 sm:px-1 md:px-0 md:w-7/12 lg:w-1/2">
+            <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight text-center">Contattami</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input

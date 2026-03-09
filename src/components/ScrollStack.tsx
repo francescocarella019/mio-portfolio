@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, type CSSProperties } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 type ExperienceItem = {
@@ -33,19 +33,19 @@ function StackCard({ item, index, total, shouldReduceMotion }: StackCardProps) {
   const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
 
   return (
-    <div className="relative min-h-[230px] md:min-h-[260px]">
+    <div className="relative min-h-[210px] md:min-h-[260px]">
       <motion.article
         ref={ref}
-        className="glass-panel sticky relative rounded-2xl p-5 md:p-6 transition-colors"
+        className="glass-panel relative md:sticky md:[top:var(--stack-top)] rounded-2xl p-4 sm:p-5 md:p-6 transition-colors"
         style={{
-          top: `calc(5.5rem + ${index * 0.8}rem)`,
+          '--stack-top': `calc(5.25rem + ${index * 0.7}rem)`,
           zIndex: total + index,
           opacity: shouldReduceMotion ? 1 : opacity,
           y: shouldReduceMotion ? 0 : y,
           scale: shouldReduceMotion ? 1 : scale,
-        }}
+        } as CSSProperties}
       >
-        <span className="absolute -left-[33px] md:-left-[41px] top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
+        <span className="absolute -left-[27px] md:-left-[41px] top-6 md:top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
         <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
         <h3 className="text-lg md:text-xl font-semibold text-neutral-100">{item.title}</h3>
         <p className="text-sm text-neutral-300 mt-1">{item.subtitle}</p>
@@ -59,7 +59,7 @@ export function ScrollStack({ items }: ScrollStackProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="relative border-l border-neutral-800 pl-6 md:pl-8">
+    <div className="relative border-l border-neutral-800 pl-5 md:pl-8 space-y-4 md:space-y-0">
       {items.map((item, index) => (
         <StackCard key={`${item.period}-${item.title}`} item={item} index={index} total={items.length} shouldReduceMotion={!!shouldReduceMotion} />
       ))}
