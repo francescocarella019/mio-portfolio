@@ -79,6 +79,42 @@ body {
   transform: translateY(0);
 }
 
+.logo-loop::before,
+.logo-loop::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 64px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.logo-loop::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0));
+}
+
+.logo-loop::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0));
+}
+
+.logo-loop-track {
+  animation-name: logo-loop-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes logo-loop-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * (var(--set-width, 50%) + var(--set-gap, 0px))));
+  }
+}
+
 @media (max-width: 767px) {
   .section-title::after {
     width: 74%;

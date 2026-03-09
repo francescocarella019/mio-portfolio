@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { EXPERIENCE, PROJECTS, PROJECT_CATEGORIES, SKILLS } from '../constants/index';
+import { LogoLoop } from '../components/LogoLoop';
 import { ProjectCard } from '../components/ProjectCard';
+import { ScrollStack } from '../components/ScrollStack';
 import { SplitText } from '../components/SplitText';
 import { trackEvent } from '../lib/analytics';
 
@@ -12,6 +14,15 @@ const NAV_ITEMS = [
   { id: 'skills', label: 'Skills' },
   { id: 'esperienza', label: 'Esperienza' },
   { id: 'contatti', label: 'Contatti' },
+] as const;
+
+const HERO_LOGOS = [
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', alt: 'React', title: 'React' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', alt: 'Next.js', title: 'Next.js' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg', alt: 'Spring', title: 'Spring' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', alt: 'TypeScript', title: 'TypeScript' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', alt: 'Tailwind CSS', title: 'Tailwind CSS' },
+  { src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', alt: 'Node.js', title: 'Node.js' },
 ] as const;
 
 export default function FullStackPortfolio() {
@@ -140,7 +151,7 @@ export default function FullStackPortfolio() {
       </div>
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <span className="text-sm md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+          <span className="max-w-[70vw] truncate text-xs sm:text-sm md:max-w-none md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
           </span>
           <ul className="hidden md:flex gap-6 text-sm font-medium text-neutral-400">
@@ -194,34 +205,30 @@ export default function FullStackPortfolio() {
         </ul>
       </motion.div>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-5 sm:px-7 md:px-8 pt-28 md:pt-32 pb-16 space-y-24 md:space-y-32">
+      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-7 md:px-8 pt-16 sm:pt-28 md:pt-32 pb-14 sm:pb-16 space-y-20 sm:space-y-24 md:space-y-32">
         <motion.section
-          className="flex flex-col items-start gap-6 pt-10 md:pt-12 px-1 md:px-0 pb-4"
+          className="flex min-h-[calc(100svh-6rem)] sm:min-h-0 flex-col justify-center items-start gap-5 sm:gap-6 pt-2 sm:pt-10 md:pt-12 px-0 sm:px-1 md:px-0 pb-4"
           variants={sectionVariants}
           initial="hidden"
           animate="show"
         >
-          <div className="flex items-center gap-3 text-sm font-mono text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/20">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-blue-400 bg-blue-500/10 px-3.5 sm:px-4 py-2 rounded-full border border-blue-500/20">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
             Disponibile per stage/apprendistato
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-neutral-100">
-            Ciao, sono uno <br />
+          <h1 className="text-[clamp(1.8rem,8.2vw,4.5rem)] leading-[1.08] font-bold tracking-tight text-neutral-100">
+            Ciao, sono uno <span className="hidden sm:inline"><br /></span>
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
-          <p className="max-w-2xl text-sm md:text-base leading-relaxed text-neutral-300">
+          <p className="max-w-2xl text-base sm:text-base leading-relaxed text-neutral-300">
             Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">React + Next.js</span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">Java + Spring</span>
-            <span className="rounded-full border border-neutral-700 bg-neutral-900/80 px-3 py-1 text-xs text-neutral-300">UI motion-driven</span>
-          </div>
+          <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={26} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.45, ease: easeCurve }}
@@ -253,7 +260,7 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Progetti Architettati</h2>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Progetti Architettati</h2>
           <div className="mb-8 flex gap-2 overflow-x-auto whitespace-nowrap pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {PROJECT_CATEGORIES.map((category) => (
               <button
@@ -276,7 +283,7 @@ export default function FullStackPortfolio() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProjectFilter}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
               variants={gridVariants}
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -297,8 +304,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Competenze Tecniche</h2>
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-4" variants={gridVariants}>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Competenze Tecniche</h2>
+          <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4" variants={gridVariants}>
             {SKILLS.map((skill) => (
               <motion.div
                 key={skill.name}
@@ -327,22 +334,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-3xl font-bold mb-8 tracking-tight">Esperienza e Formazione</h2>
-          <motion.div className="relative space-y-6 border-l border-neutral-800 pl-6 md:pl-8" variants={gridVariants}>
-            {EXPERIENCE.map((item) => (
-              <motion.article
-                key={`${item.period}-${item.title}`}
-                variants={itemVariants}
-                className="glass-panel relative rounded-2xl p-5 md:p-6 transition-colors"
-              >
-                <span className="absolute -left-[33px] md:-left-[41px] top-7 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_4px_rgba(23,23,23,1)]" />
-                <p className="text-xs font-mono text-blue-400 mb-2">{item.period}</p>
-                <h3 className="text-lg md:text-xl font-semibold text-neutral-100">{item.title}</h3>
-                <p className="text-sm text-neutral-300 mt-1">{item.subtitle}</p>
-                <p className="text-sm text-neutral-400 mt-3 leading-relaxed">{item.summary}</p>
-              </motion.article>
-            ))}
-          </motion.div>
+          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Esperienza e Formazione</h2>
+          <ScrollStack items={EXPERIENCE} />
         </motion.section>
 
         <motion.section
@@ -353,8 +346,8 @@ export default function FullStackPortfolio() {
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
         >
-          <div className="w-full px-1 md:px-0 md:w-6/12 lg:w-1/2">
-            <h2 className="section-title text-3xl font-bold mb-8 tracking-tight text-center">Contattami</h2>
+          <div className="w-full max-w-2xl px-0 sm:px-1 md:px-0 md:w-7/12 lg:w-1/2">
+            <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight text-center">Contattami</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
