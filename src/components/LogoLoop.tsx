@@ -14,7 +14,7 @@ type LogoItem = {
 };
 
 type LogoLoopProps = {
-  logos: LogoItem[];
+  logos: readonly LogoItem[];
   speed?: number;
   logoHeight?: number;
   gap?: number;
