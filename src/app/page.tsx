@@ -228,7 +228,7 @@ export default function FullStackPortfolio() {
           </p>
           <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={24} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
-            className="flex w-full flex-col sm:w-auto sm:flex-row gap-3 sm:gap-4 pt-2"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2"
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.45, ease: easeCurve }}
@@ -237,7 +237,7 @@ export default function FullStackPortfolio() {
               href="#contatti"
               aria-label="Vai alla sezione contatti"
               onClick={() => trackEvent('cta_contact_click', { location: 'hero' })}
-              className="btn-gradient inline-flex w-full sm:w-auto items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
+              className="btn-gradient inline-flex items-center justify-center rounded-xl border border-blue-400 px-6 py-3 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/60"
             >
               Contattami
             </a>
@@ -246,7 +246,7 @@ export default function FullStackPortfolio() {
               download
               aria-label="Scarica il CV di Francesco Carella"
               onClick={() => trackEvent('cta_cv_download_click', { location: 'hero' })}
-              className="inline-flex w-full sm:w-auto items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-neutral-800 hover:shadow-[0_10px_24px_rgba(2,6,23,0.35)] hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40"
+              className="inline-flex items-center justify-center rounded-xl border border-neutral-700 bg-neutral-900/90 px-6 py-3 text-sm font-semibold text-neutral-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-500 hover:bg-neutral-800 hover:shadow-[0_10px_24px_rgba(2,6,23,0.35)] hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/40"
             >
               Scarica CV
             </a>
