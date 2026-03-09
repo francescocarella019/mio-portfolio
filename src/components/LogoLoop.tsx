@@ -106,7 +106,7 @@ export function LogoLoop({ logos, speed = 80, logoHeight = 28, gap = 32, pauseOn
           gap: `${gap}px`,
           animationDuration: `${durationSeconds}s`,
           animationPlayState: isPaused ? 'paused' : 'running',
-          ...(setWidth ? ({ '--set-width': `${setWidth}px` } as CSSProperties) : {}),
+          ...(setWidth ? ({ '--set-width': `${setWidth}px`, '--set-gap': `${gap}px` } as CSSProperties) : {}),
         } as CSSProperties}
       >
         {Array.from({ length: copies }).map((_, copyIndex) => (

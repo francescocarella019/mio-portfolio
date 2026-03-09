@@ -111,7 +111,7 @@ body {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-1 * var(--set-width, 50%)));
+    transform: translateX(calc(-1 * (var(--set-width, 50%) + var(--set-gap, 0px))));
   }
 }
 
