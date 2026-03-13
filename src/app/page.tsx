@@ -214,7 +214,7 @@ export default function FullStackPortfolio() {
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
           <p className="max-w-2xl text-base sm:text-base leading-relaxed text-neutral-300">
-            Progetto e sviluppo applicazioni web dall'interfaccia al database. Scrivo codice pulito e scalabile, con una forte attenzione all'architettura del software e alle performance.
+            Progetto e sviluppo applicazioni web dall&apos;interfaccia al database. Scrivo codice pulito e scalabile, con una forte attenzione all&apos;architettura del software e alle performance.
           </p>
           <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={26} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div

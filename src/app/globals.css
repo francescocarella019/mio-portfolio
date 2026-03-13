@@ -23,6 +23,16 @@ html {
   scroll-behavior: smooth;
 }
 
+:where(#progetti, #skills, #esperienza, #contatti) {
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  :where(#progetti, #skills, #esperienza, #contatti) {
+    scroll-margin-top: 7rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
