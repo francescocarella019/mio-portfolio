@@ -133,7 +133,7 @@ export default function FullStackPortfolio() {
       : PROJECTS.filter((project) => project.category === activeProjectFilter);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30">
+    <div id="home" className="relative min-h-screen overflow-x-clip bg-neutral-950 text-neutral-50 font-sans selection:bg-blue-500/30">
       <motion.div
         className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500"
         style={{ scaleX: progressScale }}
@@ -141,9 +141,9 @@ export default function FullStackPortfolio() {
       <ParticlesBackground />
       <nav className="fixed top-0 w-full z-50 border-b border-neutral-800/90 bg-neutral-950/70 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <span className="max-w-[70vw] truncate text-xs sm:text-sm md:max-w-none md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+          <a href="#home"><span className="max-w-[70vw] truncate text-xs sm:text-sm md:max-w-none md:text-xl font-bold tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
             Francesco Pio Carella
-          </span>
+          </span></a>
           <ul className="hidden md:flex gap-6 text-sm font-medium text-neutral-400">
             {NAV_ITEMS.map((item) => (
               <li key={item.id} className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-100">
@@ -214,7 +214,7 @@ export default function FullStackPortfolio() {
             <SplitText text="Sviluppatore Full Stack." className="text-blue-500" delay={0.2} />
           </h1>
           <p className="max-w-2xl text-base sm:text-base leading-relaxed text-neutral-300">
-            Creo esperienze web moderne, performanti e curate nel dettaglio, dal frontend interattivo fino alle integrazioni backend.
+            Progetto e sviluppo applicazioni web dall'interfaccia al database. Scrivo codice pulito e scalabile, con una forte attenzione all'architettura del software e alle performance.
           </p>
           <LogoLoop logos={HERO_LOGOS} speed={80} logoHeight={26} gap={24} pauseOnHover className="w-full max-w-md" />
           <motion.div
@@ -242,15 +242,15 @@ export default function FullStackPortfolio() {
             </a>
           </motion.div>
         </motion.section>
-
-        <motion.section
-          id="progetti"
+          
+        <motion.section 
+          
           variants={sectionVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Progetti Architettati</h2>
+          <h2  id="progetti" className="section-title text-2xl sm:text-3xl font-bold mb-7 sm:mb-8 tracking-tight">Progetti Architettati</h2>
           <div className="mb-8 flex gap-2 overflow-x-auto whitespace-nowrap pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {PROJECT_CATEGORIES.map((category) => (
               <button
