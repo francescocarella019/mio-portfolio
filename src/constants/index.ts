@@ -8,12 +8,12 @@ export const SKILLS = [
 ];
 
 export const PROJECTS = [
-    {
+  {
     category: "Full Stack",
-    title: "Progetto gestione ristorante",
-    description: "Piattoforma di sviluppo full-stack per la gestione degli ordini ai tavoli dei ristoranti",
-    tech: ["Java", "Spring-Boot", "Maven", "Tailwind-CSS"],
-    link: "https://github.com/francescocarella019/FoodlyAPP",
+    title: "Forum Agenzia Viaggi Puglia",
+    description: "Piattaforma web full-stack per la gestione di un forum turistico pugliese con recensioni verificate post-acquisto, commenti gerarchici, upload media e dashboard staff.",
+    tech: ["Java", "Spring Boot", "MySQL", "Docker", "Thymeleaf"],
+    link: "https://github.com/francescocarella019/PW_Gruppo4",
   },
   {
     category: "Full Stack",
@@ -28,24 +28,45 @@ export const PROJECT_CATEGORIES = ["Tutti", "Frontend", "Backend", "Full Stack"]
 
 export const EXPERIENCE = [
   {
-    period: "2025 - Oggi",
-    title: "Sviluppatore Full Stack (Progetti personali)",
-    subtitle: "Portfolio, app web e architetture backend",
+    period: "2025 - 2027",
+    title: "Software Architect Specialist",
+    subtitle: "ITSAngeloRizzoli — Milano",
     summary:
-      "Sviluppo di applicazioni complete con Next.js, Java/Spring Boot e integrazioni API, con attenzione a UX, performance e deployment.",
+      "Corso biennale di alta specializzazione tecnica focalizzato sulla progettazione e sviluppo di architetture software scalabili, ingegneria del software, sviluppo Full Stack (Java, Spring Boot, React, Angular) e gestione del ciclo di vita applicativo.",
   },
   {
-    period: "2024 - 2025",
-    title: "Formazione tecnica Full Stack",
-    subtitle: "Percorso pratico su frontend e backend",
+    period: "03.2026",
+    title: "BIP Media Innovation",
+    subtitle: "Hogeschool van Amsterdam",
     summary:
-      "Approfondimento di React, TypeScript, Java, database SQL/NoSQL, Git/GitHub e buone pratiche di sviluppo collaborativo.",
+      "Blended Intensive Programme internazionale focalizzato sull'innovazione nei media e nelle tecnologie digitali, con collaborazione in team multidisciplinari su progettazione e sviluppo di soluzioni innovative.",
   },
   {
-    period: "2023 - 2024",
-    title: "Primi progetti web strutturati",
-    subtitle: "Focus su basi solide",
+    period: "06.2025 - 09.2025",
+    title: "Operatore di Produzione",
+    subtitle: "STMicroelectronics — Agrate Brianza",
     summary:
-      "Realizzazione di applicazioni CRUD e REST API, consolidando clean code, versionamento e debug in contesti reali.",
+      "Esperienza lavorativa nel settore dei semiconduttori e dell'alta tecnologia, maturando rigore nei processi industriali, conformità agli standard qualitativi, precisione e lavoro di squadra in contesti strutturati.",
+  },
+  {
+    period: "06.2024",
+    title: "Artificial Intelligence Project",
+    subtitle: "Cisco — Vimercate",
+    summary:
+      "Partecipazione a un progetto intensivo incentrato su concetti e applicazioni pratiche di Intelligenza Artificiale, networking avanzato e tecnologie infrastrutturali abilitanti.",
+  },
+  {
+    period: "2020 - 2025",
+    title: "Diploma in Informatica e Telecomunicazioni",
+    subtitle: "IIS Albert Einstein — Vimercate",
+    summary:
+      "Percorso quinquennale di studi tecnici con focus approfondito su algoritmi, programmazione ad oggetti, progettazione di database SQL, reti di calcolatori e sistemi operativi.",
+  },
+  {
+    period: "2022 - 2025",
+    title: "Rider per consegne a domicilio / Cameriere",
+    subtitle: "Cornate d'Adda",
+    summary:
+      "Esperienza lavorativa a contatto con il pubblico svolta in parallelo agli studi, fondamentale per consolidare autodisciplina, problem solving, gestione dello stress, puntualità e flessibilità.",
   },
 ];
