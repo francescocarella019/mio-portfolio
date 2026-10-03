@@ -20,11 +20,11 @@ In un mercato tecnologico dinamico ed esigente, avere una presenza online effica
 
 ---
 
-## 🚀 Link alla Demo & Screenshot
+## 🚀 Link alla Demo
 
 ### 🌐 Live Demo
 Puoi esplorare l'applicazione live al seguente link:
-- **Sito Web Live**: [👉 Visita il Portfolio](https://mio-portfolio-francescocarella.vercel.app/) *(oppure inserisci qui l'URL Vercel di produzione)*
+- **Sito Web Live**: [👉 Visita il Portfolio](https://mio-portfolio-one.vercel.app/)
 
 ---
 
